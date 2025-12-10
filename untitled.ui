@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>695</width>
+    <height>664</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QRCODE-BUILDER</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color:#4682B4;
+	border-radius: 15px;
+}
+QMessageBox{
+	background-color:#fff;
+	color: black;
+}
+QMessageBox PushButton{
+	padding:15px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLineEdit" name="txtUrl">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{
+	background-color: #F0F0F0;
+	border-radius:6px;
+	padding:20px;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="placeholderText">
+         <string>URL DO SITE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="txtUrlShort">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit{
+	background-color: #F0F0F0;
+	border-radius:6px;
+	padding:20px;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="placeholderText">
+         <string>URL ENCURTADA</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>48</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+	background-color: #F0F0F0;
+	border-radius:10px;
+}</string>
+        </property>
+        <property name="text">
+         <string>QRCODE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="btnGerar">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	background-color: #40E0D0;
+	border-radius:10px;
+	font-size: 20px;
+	color:#F5FFFA;
+	padding:30px;
+
+}</string>
+          </property>
+          <property name="text">
+           <string>Gerar URL</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSalvar">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+	background-color:#40E0D0;
+	border-radius:10px;
+	font-size:20px;
+	color: #F5FFFA;
+	padding:30px;
+}</string>
+          </property>
+          <property name="text">
+           <string>Salvar QRCode</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>695</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
