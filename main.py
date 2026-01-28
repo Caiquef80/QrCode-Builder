@@ -36,7 +36,7 @@ class QRCodeBuilder(QMainWindow):
         url = CREATE_SHORT_URL(valor)
         CREATE_QRCODE(url)
         self.setURL(url)
-        self.img.setPixmap(QPixmap("teste.png"))
+        self.label.setPixmap(QPixmap("teste.png"))
       else:
         self.showMessage("Erro URL" , "É esperado que você passe uma URL")
         
