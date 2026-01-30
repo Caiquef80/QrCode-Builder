@@ -27,18 +27,20 @@ class QRCodeBuilder(QMainWindow):
       return self.txtUrl.text()
     
     def setURL(self , url):
-    
       self.txtUrlShort.setText(url)
       
     @pyqtSlot()
     def on_btnGerar_clicked(self):
       valor = self.getURL()
       if valor:
-        url = CREATE_SHORT_URL(valor)
-        CREATE_QRCODE(url)
-        self.setURL(url)
-        self.label.setPixmap(QPixmap("teste.png"))
-        self.btnSalvar.setEnabled(True)
+        try:
+          url = CREATE_SHORT_URL(valor)
+          CREATE_QRCODE(url)
+          self.setURL(url)
+          self.label.setPixmap(QPixmap("teste.png"))
+          self.btnSalvar.setEnabled(True)
+        except:
+          self.showMessage("ERRO" , "Link de URL invalido")
       else:
         self.showMessage("Erro URL" , "É esperado que você passe uma URL")
     @pyqtSlot()
