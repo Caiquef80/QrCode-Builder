@@ -27,6 +27,7 @@ class QRCodeBuilder(QMainWindow):
       return self.txtUrl.text()
     
     def setURL(self , url):
+    
       self.txtUrlShort.setText(url)
       
     @pyqtSlot()
@@ -43,15 +44,22 @@ class QRCodeBuilder(QMainWindow):
     @pyqtSlot()
     def on_btnSalvar_clicked(self):
       self.salvar()
+      self.setURL("")
+      self.txtUrl.setText("")
+      self.label.clear()
+      
 
     def salvar(self):
       nomeArquivo , _ = QFileDialog.getSaveFileName(self, "Salvar imagem")
       if nomeArquivo:
         caminho = path.dirname(nomeArquivo)
         nome = nomeArquivo.removeprefix(caminho)
+        self.btnSalvar.setEnabled(False)
+        self.notify()
         #abrir QRCODE
         with open("teste.png" , "rb") as fotoQrCode:
           dadosQrCode = fotoQrCode.read()
+
 
         #salvar a foto aonde o user escolheu
         with open(caminho+ f"{nome}.png", "wb") as foto:
@@ -59,6 +67,12 @@ class QRCodeBuilder(QMainWindow):
 
     def showMessage(self , title , message):
       QMessageBox.information(self, title , message)
+
+    def notify(self , title , message):
+      notification = Notify()
+      notification.title = title
+      notification.message = message
+      return notification.send()
       
 
 if __name__ == "__main__":
