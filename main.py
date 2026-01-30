@@ -70,11 +70,7 @@ class QRCodeBuilder(QMainWindow):
     def showMessage(self , title , message):
       QMessageBox.information(self, title , message)
 
-    def notify(self , title , message):
-      notification = Notify()
-      notification.title = title
-      notification.message = message
-      return notification.send()
+
       
 
 if __name__ == "__main__":
