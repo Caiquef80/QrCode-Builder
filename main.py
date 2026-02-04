@@ -1,14 +1,20 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow , QMessageBox , QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QPixmap
-from pyshorteners import Shortener
+from pyshorteners import Shortener1
+import pyshorteners.tinyurl
 from notifypy import Notify
 from os import path
 import qrcode 
+import sys
+
+def loadFile(file):
+  base_path = getattr(sys, "_MEIPASS", path.dirname(path.abspath(__file__)))
+  return path.join(base_path, file)
 
 def CREATE_SHORT_URL(url):
-  link = Shortener()
+  link = Shortener1()
   return link.tinyurl.short(url)
 
 def CREATE_QRCODE(url):
@@ -18,7 +24,7 @@ def CREATE_QRCODE(url):
 class QRCodeBuilder(QMainWindow):
     def __init__(self, **kwargs):
       super().__init__(**kwargs)
-      loadUi("untitled.ui", self)
+      loadUi(loadFile("./untitled.ui"), self)
       self.show()
       
      
@@ -57,7 +63,7 @@ class QRCodeBuilder(QMainWindow):
         caminho = path.dirname(nomeArquivo)
         nome = nomeArquivo.removeprefix(caminho)
         self.btnSalvar.setEnabled(False)
-        self.notify()
+        self.notify("Imagem", "Imagem Salva com sucesso")
         #abrir QRCODE
         with open("teste.png" , "rb") as fotoQrCode:
           dadosQrCode = fotoQrCode.read()
@@ -67,6 +73,12 @@ class QRCodeBuilder(QMainWindow):
         with open(caminho+ f"{nome}.png", "wb") as foto:
           foto.write(dadosQrCode)
 
+    def notify(self , title , message):
+      notification = Notify()
+      notification.title = title
+      notification.message = message
+      return notification.send()
+    
     def showMessage(self , title , message):
       QMessageBox.information(self, title , message)
 
